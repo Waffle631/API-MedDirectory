@@ -53,11 +53,15 @@ jobs:
           PORT: ${{ secrets.PORT }}
           VITE_GOOGLE_MAPS_API_KEY: ${{ secrets.VITE_GOOGLE_MAPS_API_KEY }}
 
+    # Zip artifacts to speed things up
+    - name: Zip artifact for deployment
+      run: zip release.zip ./* -qr
+
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v3
       with:
         name: node-app
-        path: .
+        path: release.zip
 
   deploy:
     permissions:
@@ -80,4 +84,4 @@ jobs:
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+        package: release.zip
