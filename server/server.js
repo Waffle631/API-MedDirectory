@@ -13,4 +13,4 @@ mongoose.connect(process.env.MONGO_URL, {
     console.log(err.message);
 });
 
-app.listen(port, () => console.log(`Server running on port ${port}`));
+app.listen(port, () => console.log(`Server running on port ${port} s`));
