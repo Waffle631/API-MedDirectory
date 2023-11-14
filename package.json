@@ -4,9 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build --base=/",
-    "preview": "vite preview",
+    "start": "node server/server.js",
     "test": "jest",
     "dev_back": "nodemon server/server.js"
   },
