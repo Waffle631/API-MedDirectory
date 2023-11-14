@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 
 dotenv.config();
 const port = process.env.PORT || 8080;
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(()=>{
