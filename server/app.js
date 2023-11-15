@@ -8,6 +8,9 @@ app.use(express.json());
 
 app.use("/doctorAPI", doctorRoutes);
 app.get("/ping", (req, res) => res.send("pong"));
+app.get('/', function (req, res) {
+  return res.send("Hello World!");
+});
 app.post("/test", (req, res) => {
   console.log(req.body);
   res.json({ OK: "OK" });

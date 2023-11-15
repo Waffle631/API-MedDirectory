@@ -26,6 +26,9 @@ env:
   AZURE_WEBAPP_NAME: API-Med    # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
   NODE_VERSION: '18.x'                # set this to the node version to use
+  MONGO_URL: ${{ secrets.MONGO_URL }}
+  PORT: ${{ secrets.PORT }}
+  VITE_GOOGLE_MAPS_API_KEY: ${{ secrets.VITE_GOOGLE_MAPS_API_KEY }}
 
 permissions:
   contents: read
@@ -47,11 +50,6 @@ jobs:
         npm install
         npm run build --if-present
         npm run test --if-present
-      
-      env:
-          MONGO_URL: ${{ secrets.MONGO_URL }}
-          PORT: ${{ secrets.PORT }}
-          VITE_GOOGLE_MAPS_API_KEY: ${{ secrets.VITE_GOOGLE_MAPS_API_KEY }}
 
     # Zip artifacts to speed things up
     - name: Zip artifact for deployment
